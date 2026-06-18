@@ -29,6 +29,11 @@ The goal is not to predict a provider invoice perfectly. The goal is to make an 
 | `skill/launch-checklist.md` | Production launch gates, dashboards, alerts, and runbooks |
 | `skill/references.md` | Primary source links and verification policy |
 | `skill/templates/*` | Copyable worksheets and review templates |
+| `agents/rpc-cost-architect.md` | Optional specialist agent for cost and launch-readiness reviews |
+| `commands/rpc-cost-review.md` | Optional workflow command for structured reviews |
+| `commands/provider-scorecard.md` | Optional workflow command for provider comparisons |
+| `rules/rpc-cost-patterns.md` | Optional code review rules for RPC-heavy code |
+| `examples/wallet-dashboard-review.md` | Sample output artifact |
 
 ## Installation
 
@@ -52,7 +57,13 @@ Install into a custom skill path:
 ./install.sh --path /path/to/.claude/skills/solana-rpc-cost-guard
 ```
 
-The installer copies only the `skill/` directory. It does not ask for keys, create wallets, send transactions, or contact an RPC provider.
+The installer does not ask for keys, create wallets, send transactions, or contact an RPC provider.
+
+By default, the installer also copies the optional agent, commands, and rules into the same `.claude` directory. To install only the skill:
+
+```bash
+./install.sh --skill-only
+```
 
 ## Example Prompts
 

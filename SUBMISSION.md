@@ -20,6 +20,10 @@ The skill follows the Solana AI Kit pattern of a small `SKILL.md` router plus pr
 - Rate-limit, caching, batching, and backoff guidance.
 - Production launch checklist.
 - Copyable templates for cost worksheets, provider evaluation, and launch reviews.
+- An optional `rpc-cost-architect` agent for dedicated reviews.
+- Two workflow commands: `/rpc-cost-review` and `/provider-scorecard`.
+- A code-review rule file for RPC-heavy application code.
+- A sample wallet dashboard review artifact.
 - A validation script that checks the skill structure.
 
 ## Why It Is Useful

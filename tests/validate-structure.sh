@@ -6,7 +6,13 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 required_files=(
   "README.md"
   "LICENSE"
+  "SUBMISSION.md"
   "install.sh"
+  "agents/rpc-cost-architect.md"
+  "commands/rpc-cost-review.md"
+  "commands/provider-scorecard.md"
+  "rules/rpc-cost-patterns.md"
+  "examples/wallet-dashboard-review.md"
   "skill/SKILL.md"
   "skill/references.md"
   "skill/rpc-cost-triage.md"
@@ -47,9 +53,40 @@ for linked in "${linked_files[@]}"; do
   fi
 done
 
-if grep -R "TODO\\|TBD\\|PLACEHOLDER" "$ROOT/README.md" "$ROOT/skill" >/dev/null; then
+if grep -R "TODO\\|TBD\\|PLACEHOLDER" \
+  "$ROOT/README.md" \
+  "$ROOT/SUBMISSION.md" \
+  "$ROOT/skill" \
+  "$ROOT/agents" \
+  "$ROOT/commands" \
+  "$ROOT/rules" \
+  "$ROOT/examples" >/dev/null; then
   echo "Found unfinished TODO/TBD/PLACEHOLDER text" >&2
   exit 1
 fi
+
+if [[ ! -x "$ROOT/install.sh" ]]; then
+  echo "install.sh must be executable" >&2
+  exit 1
+fi
+
+if [[ ! -x "$ROOT/tests/validate-structure.sh" ]]; then
+  echo "tests/validate-structure.sh must be executable" >&2
+  exit 1
+fi
+
+for frontmatter_file in \
+  "$ROOT/skill/SKILL.md" \
+  "$ROOT/agents/rpc-cost-architect.md" \
+  "$ROOT/commands/rpc-cost-review.md" \
+  "$ROOT/commands/provider-scorecard.md" \
+  "$ROOT/rules/rpc-cost-patterns.md"; do
+  if [[ "$(sed -n '1p' "$frontmatter_file")" != "---" ]]; then
+    echo "Missing frontmatter: ${frontmatter_file#$ROOT/}" >&2
+    exit 1
+  fi
+done
+
+"$ROOT/install.sh" --dry-run >/dev/null
 
 echo "Structure validation passed."
