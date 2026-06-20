@@ -62,6 +62,8 @@ I also ran:
 git diff --check
 ```
 
+Reviewer shortcut: [JUDGING.md](JUDGING.md) maps the skill directly to the listing's usefulness, novelty, quality, and fit criteria.
+
 ## Source Policy
 
 The skill points agents to official Solana documentation for time-sensitive network facts:

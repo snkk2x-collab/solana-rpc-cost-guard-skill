@@ -34,6 +34,7 @@ The goal is not to predict a provider invoice perfectly. The goal is to make an 
 | `commands/provider-scorecard.md` | Optional workflow command for provider comparisons |
 | `rules/rpc-cost-patterns.md` | Optional code review rules for RPC-heavy code |
 | `examples/wallet-dashboard-review.md` | Sample output artifact |
+| `JUDGING.md` | Direct mapping to Superteam usefulness, novelty, quality, and fit criteria |
 
 ## Installation
 
@@ -115,6 +116,8 @@ bash tests/validate-structure.sh
 ```
 
 The validation script checks that required skill files exist and that every progressive-disclosure route is linked from `SKILL.md`.
+
+For a reviewer-focused overview, see [JUDGING.md](JUDGING.md).
 
 ## Safety Notes
 
